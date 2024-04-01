@@ -1,21 +1,21 @@
-struct User {
-    activate: bool,
-    username: String,
-    email: String,
+struct Person<'a> {
+    name: &'a str, // Change to mutable reference to String
+    //      ^ lifetime specifer 
+    age: i32,
 }
+
 fn main() {
-
-    let mut user1 = build_user(String::from("name@gmail.com"), String::from("username"));
-
-    let user2:User = User {
-        email: String::from("new@gmail.com"),
-        ..user1
+    let first_name = "yilmaz"; // Convert string slice to String
+    let mut person = Person {
+        name: &first_name, // Mutable reference to String
+        age: 32,
     };
-}
-fn build_user(email:String, username:String)-> User {
-    User {
-        activate:true,
-        username,
-        email,
+
+    {
+        let last_name = String::from("bingol");
+        person.name = &last_name; // Assigning a new String to the mutable reference
+        println!("{}", person.name)
     }
+    // String -> heap
+    // str -> Stack
 }
