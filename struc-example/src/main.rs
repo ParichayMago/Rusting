@@ -1,7 +1,10 @@
 struct area(u32, u32);
 
 fn main() {
-    let rect = get_area(area(10, 20));
+  let width =10;
+  let height = 20;
+
+  let rect = get_area(area(width, height));
 
   println!("{}", rect)
 }
