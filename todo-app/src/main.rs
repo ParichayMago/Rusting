@@ -11,11 +11,11 @@ mod todoTask {
     #[derive(Debug, Deserialize, Serialize)]
     pub struct TodoData {
         
+        completed: bool,
         user_id: String,
         task_id: String,
         task: String,
         date: String,
-        completed: bool,
     }
     
     #[post("/new", format = "json", data = "<todo_data>")]
